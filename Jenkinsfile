@@ -18,7 +18,7 @@ pipeline {
     }
     post {
         success {
-            archive '**/*.war'
+            archive '**/*.jar'
             junit '**/TEST-*.xml'
         }
     }
