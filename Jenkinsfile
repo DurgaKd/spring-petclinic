@@ -1,5 +1,5 @@
 node('MASTER') {
-    stage('SCM') {
+    stage('scm') {
         git 'https://github.com/DurgaKd/spring-petclinic.git'
     }
     stage('build'){
