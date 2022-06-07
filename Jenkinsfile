@@ -16,10 +16,4 @@ pipeline {
             }
         }
     }
-    postbuild {
-        success {
-            archive '**/*.war'
-            junit '**/TEST-*.xml'
-        }
-    }
 }
