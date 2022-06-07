@@ -1,4 +1,4 @@
-node('SPC') {
+node('spc-p1') {
     stage('SCM') {
         git 'https://github.com/DurgaKd/spring-petclinic.git'
     }
