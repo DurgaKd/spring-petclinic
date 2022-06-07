@@ -1,12 +1,25 @@
-node('MASTER') {
-    stage('scm') {
-        git branch: 'main', url: 'https://github.com/DurgaKd/spring-petclinic.git'
+pipleline {
+    agent { label 'MASTER'}
+    triggers {
+        cron ('* * * * *')
+        pollscm ('* * * * *')
     }
-    stage('build'){
-        sh 'mvn package'
+    stages {
+        stage('scm') {
+            steps {
+                git branch:'main' , url:'https://github.com/DurgaKd/spring-petclinic.git'
+            }
+        }
+        stage('build') {
+            steps {
+                sh 'mvn package'
+            }
+        }
     }
-    stage('postbuild'){
-        junit '**/TEST-*.xml'
-        archive '**/*.jar'
+    postbuild {
+        success {
+            archive '**/*.war'
+            junit '**/TEST-*.xml'
+        }
     }
 }
