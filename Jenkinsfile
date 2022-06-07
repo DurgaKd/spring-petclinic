@@ -7,6 +7,6 @@ node('MASTER') {
     }
     stage('postbuild'){
         junit '**/TEST-*.xml'
-        archive '**/*.war'
+        archive '**/*.jar'
     }
 }
